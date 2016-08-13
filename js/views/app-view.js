@@ -21,7 +21,8 @@ var app = app || {};
 		events: {
 			'keypress #new-todo': 'createOnEnter',
 			'click #clear-completed': 'clearCompleted',
-			'click #toggle-all': 'toggleAllComplete'
+			'click #toggle-all': 'toggleAllComplete',
+			'click #new-todo-priority': 'togglePriority'
 		},
 
 		// At initialization we bind to the relevant events on the `Todos`
@@ -33,6 +34,7 @@ var app = app || {};
 			this.$footer = this.$('#footer');
 			this.$main = this.$('#main');
 			this.$list = $('#todo-list');
+			this.$priority = $('#new-todo-priority');
 
 			this.listenTo(app.todos, 'add', this.addOne);
 			this.listenTo(app.todos, 'reset', this.addAll);
@@ -99,7 +101,8 @@ var app = app || {};
 			return {
 				title: this.$input.val().trim(),
 				order: app.todos.nextOrder(),
-				completed: false
+				completed: false,
+				priority: this.$priority.is('.active')
 			};
 		},
 
@@ -126,6 +129,10 @@ var app = app || {};
 					completed: completed
 				});
 			});
+		},
+
+		togglePriority: function () {
+			this.$priority.toggleClass('active');
 		}
 	});
 })(jQuery);

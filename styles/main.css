@@ -1,3 +1,22 @@
+#new-todo-priority {
+	position: absolute;
+	top: 16px;
+	left: 38px;
+	background-color: #fcfcfc;
+	z-index: 10;
+	height: 64px;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+#new-todo-priority.active {
+	color: #d66;
+}
+
+#new-todo-priority:hover {
+	font-size: 35px;
+}
+
 #todo-list li .priority-btn {
 	display: none;
 	height: auto;
@@ -21,6 +40,7 @@
 	display: block;
 }
 
+#new-todo-priority:after,
 #todo-list li .priority-btn:after {
 	content: '!';
 }

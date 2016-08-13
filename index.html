@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>Backbone.js • TodoMVC</title>
 		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">
+		<link rel="stylesheet" href="styles/main.css">
 	</head>
 	<body>
 		<section id="todoapp">
@@ -27,6 +28,7 @@
 			<div class="view">
 				<input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
 				<label><%- title %><%= completed ? ' -- done ' : '' %></label>
+				<button class="edit-btn"></button>
 				<button class="destroy"></button>
 			</div>
 			<input class="edit" value="<%- title %>">

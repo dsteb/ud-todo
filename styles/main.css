@@ -73,6 +73,14 @@
 	color: #d66;
 }
 
+#todo-list li.low-priority:not(.completed) label {
+	color: #ffa500;
+}
+
+#todo-list li.low-priority .priority-btn:after {
+	color: #ffa500;
+}
+
 #todo-list li .destroy,
 #todo-list li .edit-btn {
 	display: none;

@@ -11,10 +11,11 @@ var app = app || {};
 	app.Todo = Backbone.Model.extend({
 		// Default attributes for the todo
 		// and ensure that each todo created has `title` and `completed` keys.
+		// the priorities are [0, 1, 2] => [no-priority, low-priority, high-priority]
 		defaults: {
 			title: '',
 			completed: false,
-			priority: false
+			priority: 0
 		},
 
 		// Toggle the `completed` state of this todo item.
@@ -25,9 +26,9 @@ var app = app || {};
 		},
 
 		// Toggle the `priority` state of this todo item.
-		togglePriority: function () {
+		nextPriority: function () {
 			this.save({
-				priority: !this.get('priority')
+				priority: (this.get('priority') + 1) % 3
 			});
 		}
 	});

@@ -67,9 +67,15 @@ var app = app || {};
 			var isHiddenCompleted = this.model.get('completed') ?
 				app.TodoFilter === 'active' :
 				app.TodoFilter === 'completed';
-			var isHiddenPriority = this.model.get('priority') ?
-				app.PriorityFilter === 'not-priority' :
-				app.PriorityFilter === 'priority';
+			var isHiddenPriority = false;
+			if (app.PriorityFilter) {
+				var priority = this.model.get('priority');
+				if (app.PriorityFilter === 'low-priority' && priority !== 1 ||
+						app.PriorityFilter === 'high-priority' && priority !== 2 ||
+						app.PriorityFilter === 'no-priority' && priority !== 0) {
+					isHiddenPriority = true;
+				}
+			}
 			return isHiddenCompleted || isHiddenPriority;
 		},
 

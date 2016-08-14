@@ -152,10 +152,12 @@ var app = app || {};
 			var $priorityFilter = $('#priority-filter');
 			var clazz;
 			if (!app.PriorityFilter) {
-				clazz = 'priority';
-			} else if (app.PriorityFilter === 'priority') {
-				clazz = 'not-priority';
-			} else if (app.PriorityFilter === 'not-priority') {
+				clazz = 'low-priority';
+			} else if (app.PriorityFilter === 'low-priority') {
+				clazz = 'high-priority';
+			} else if (app.PriorityFilter === 'high-priority') {
+				clazz = 'no-priority';
+			} else {
 				clazz = '';
 			}
 			$priorityFilter.removeClass().addClass(clazz);

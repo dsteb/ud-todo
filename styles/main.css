@@ -32,11 +32,15 @@
 	cursor: pointer;
 }
 
-#priority-filter.priority {
+#priority-filter.low-priority {
+	color: #ffa500;
+}
+
+#priority-filter.high-priority {
 	color: #d66;
 }
 
-#priority-filter.not-priority {
+#priority-filter.no-priority {
 	text-decoration: line-through;
 }
 

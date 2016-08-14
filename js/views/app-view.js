@@ -22,7 +22,8 @@ var app = app || {};
 			'keypress #new-todo': 'createOnEnter',
 			'click #clear-completed': 'clearCompleted',
 			'click #toggle-all': 'toggleAllComplete',
-			'click #new-todo-priority': 'togglePriority'
+			'click #new-todo-priority': 'togglePriority',
+			'click #priority-filter': 'nextPriorityFilter'
 		},
 
 		// At initialization we bind to the relevant events on the `Todos`
@@ -67,6 +68,8 @@ var app = app || {};
 					.removeClass('selected')
 					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
 					.addClass('selected');
+
+				$('#priority-filter').addClass(app.PriorityFilter);
 			} else {
 				this.$main.hide();
 				this.$footer.hide();
@@ -133,6 +136,21 @@ var app = app || {};
 
 		togglePriority: function () {
 			this.$priority.toggleClass('active');
+		},
+
+		nextPriorityFilter: function () {
+			var $priorityFilter = $('#priority-filter');
+			var clazz;
+			if (!app.PriorityFilter) {
+				clazz = 'priority';
+			} else if (app.PriorityFilter === 'priority') {
+				clazz = 'not-priority';
+			} else if (app.PriorityFilter === 'not-priority') {
+				clazz = '';
+			}
+			$priorityFilter.removeClass().addClass(clazz);
+			app.PriorityFilter = clazz;
+			app.todos.trigger('filter');
 		}
 	});
 })(jQuery);

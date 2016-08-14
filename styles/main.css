@@ -17,6 +17,25 @@
 	font-size: 35px;
 }
 
+#priority-filter {
+	position: absolute;
+	left: 140px;
+	top: -5px;
+	font-size: 25px;
+	width: 30px;
+	height: 30px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+#priority-filter.priority {
+	color: #d66;
+}
+
+#priority-filter.not-priority {
+	text-decoration: line-through;
+}
+
 #todo-list li .priority-btn {
 	display: none;
 	height: auto;
@@ -40,6 +59,7 @@
 	display: block;
 }
 
+#priority-filter:after,
 #new-todo-priority:after,
 #todo-list li .priority-btn:after {
 	content: '!';
@@ -73,6 +93,7 @@
 	right: 40px;
 }
 
+#priority-filter:hover,
 #todo-list li .destroy:hover,
 #todo-list li .edit-btn:hover {
 	text-shadow: 0 0 1px #000,

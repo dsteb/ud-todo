@@ -22,7 +22,7 @@ var app = app || {};
 			'keypress #new-todo': 'createOnEnter',
 			'click #clear-completed': 'clearCompleted',
 			'click #toggle-all': 'toggleAllComplete',
-			'click #new-todo-priority': 'togglePriority',
+			'click #new-todo-priority': 'nextPriority',
 			'click #priority-filter': 'nextPriorityFilter'
 		},
 
@@ -101,11 +101,13 @@ var app = app || {};
 
 		// Generate the attributes for a new Todo item.
 		newAttributes: function () {
+			var highPriority = this.$priority.is('.high-priority') ? 2 : 0;
+			var priority = this.$priority.is('.low-priority') ? 1 : highPriority;
 			return {
 				title: this.$input.val().trim(),
 				order: app.todos.nextOrder(),
 				completed: false,
-				priority: this.$priority.is('.active')
+				priority: priority
 			};
 		},
 
@@ -134,8 +136,16 @@ var app = app || {};
 			});
 		},
 
-		togglePriority: function () {
-			this.$priority.toggleClass('active');
+		nextPriority: function () {
+			var clazz = this.$priority.attr('class');
+			if (!clazz) {
+				clazz = 'low-priority';
+			} else if (clazz === 'low-priority') {
+				clazz = 'high-priority';
+			} else {
+				clazz = '';
+			}
+			this.$priority.removeClass().addClass(clazz);
 		},
 
 		nextPriorityFilter: function () {

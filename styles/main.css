@@ -9,7 +9,11 @@
 	cursor: pointer;
 }
 
-#new-todo-priority.active {
+#new-todo-priority.low-priority {
+	color: #ffa500;
+}
+
+#new-todo-priority.high-priority {
 	color: #d66;
 }
 

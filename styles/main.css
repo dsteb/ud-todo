@@ -73,10 +73,16 @@
 	content: '!';
 }
 
-#todo-list .priority-btn:hover,
+#todo-list li label {
+	overflow: hidden;
+}
+
+#todo-list .priority-btn:hover {
+	font-size: 35px;	
+}
+
 #todo-list li.priority:not(.completed) label {
 	color: #d66;
-	cursor: pointer;
 }
 
 #todo-list li.priority .priority-btn:after {
